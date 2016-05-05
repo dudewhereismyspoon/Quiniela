@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="david.app"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="21" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="david.quiniela.PantallaInicial"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="david.quiniela.PantallaAnalisis1"
+            android:label="@string/title_activity_pantalla_analisis1"
+            android:screenOrientation="sensorPortrait" >
+        </activity>
+        <activity
+            android:name="david.quiniela.PantallaAnalisis2"
+            android:label="@string/title_activity_pantalla_analisis2"
+            android:screenOrientation="sensorPortrait" >
+        </activity>
+        <activity
+            android:name="david.quiniela.PantallaAnalisis3"
+            android:label="@string/title_activity_pantalla_analisis3" >
+        </activity>
+        <activity
+            android:name="david.quiniela.PantallaAnalisis4"
+            android:label="@string/title_activity_pantalla_analisis4" >
+        </activity>
+        <activity
+            android:name="david.quiniela.PantallaAnalisis5"
+            android:label="@string/title_activity_pantalla_analisis5" >
+        </activity>
+        <activity
+            android:name="david.quiniela.PantallaAnalisis6"
+            android:label="@string/title_activity_pantalla_analisis6" >
+        </activity>
+        <activity
+            android:name="david.quiniela.PantallaAnalisis7"
+            android:label="@string/title_activity_pantalla_analisis7" >
+        </activity>
+        <activity
+            android:name="david.quiniela.PantallaAnalisis8"
+            android:label="@string/title_activity_pantalla_analisis8" >
+        </activity>
+        <activity
+            android:name="david.quiniela.PantallaAnalisis9"
+            android:label="@string/title_activity_pantalla_analisis9" >
+        </activity>
+        <activity
+            android:name="david.quiniela.PantallaAnalisis10"
+            android:label="@string/title_activity_pantalla_analisis10" >
+        </activity>
+        <activity
+            android:name="david.quiniela.PantallaAnalisis11"
+            android:label="@string/title_activity_pantalla_analisis11" >
+        </activity>
+        <activity
+            android:name="david.quiniela.PantallaAnalisis12"
+            android:label="@string/title_activity_pantalla_analisis12" >
+        </activity>
+        <activity
+            android:name="david.quiniela.PantallaAnalisis13"
+            android:label="@string/title_activity_pantalla_analisis13" >
+        </activity>
+        <activity
+            android:name="david.quiniela.PantallaAnalisis14"
+            android:label="@string/title_activity_pantalla_analisis14" >
+        </activity>
+        <activity
+            android:name="david.quiniela.PantallaAnalsis15"
+            android:label="@string/title_activity_pantalla_analsis15" >
+        </activity>
+        <activity
+            android:name="david.quiniela.PantallaResultados"
+            android:label="@string/title_activity_pantalla_resultados" >
+        </activity>
+    </application>
+
+</manifest>

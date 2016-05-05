@@ -1,0 +1,5 @@
+C:\Users\ALUMNO\Documents\Proyectos_Android\App\app\build\intermediates\classes\debug
+C:\Users\ALUMNO\Documents\Proyectos_Android\App\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-13a6442461843186befe6d0fcba3b24314678d48.jar
+C:\Users\ALUMNO\Documents\Proyectos_Android\App\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-2f5fc5780f388b2395c08bd446571cf3df16e837.jar
+C:\Users\ALUMNO\Documents\Proyectos_Android\App\app\build\intermediates\pre-dexed\debug\classes-c043240287398cab3e582a92ce84a6fab24d51db.jar
+C:\Users\ALUMNO\Documents\Proyectos_Android\App\app\build\intermediates\pre-dexed\debug\classes-7314c14346debb9a88d96d61131b999d3e3cc7b4.jar
