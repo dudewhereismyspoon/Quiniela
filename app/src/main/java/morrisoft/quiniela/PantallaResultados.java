@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -573,6 +574,26 @@ public class PantallaResultados extends Activity {
       }
 
     }
+
+    // TODO Modificar textos
+
+    TextView partido1 = (TextView) findViewById(R.id.textView8);
+    TextView partido2 = (TextView) findViewById(R.id.textView11);
+    TextView partido3 = (TextView) findViewById(R.id.textView12);
+    TextView partido4 = (TextView) findViewById(R.id.textView13);
+    TextView partido5 = (TextView) findViewById(R.id.textView14);
+    TextView partido6 = (TextView) findViewById(R.id.textView15);
+    TextView partido7 = (TextView) findViewById(R.id.textView16);
+    TextView partido8 = (TextView) findViewById(R.id.textView17);
+    TextView partido9 = (TextView) findViewById(R.id.textView18);
+    TextView partido10 = (TextView) findViewById(R.id.textView19);
+    TextView partido11 = (TextView) findViewById(R.id.textView20);
+    TextView partido12 = (TextView) findViewById(R.id.textView21);
+    TextView partido13 = (TextView) findViewById(R.id.textView22);
+    TextView partido14 = (TextView) findViewById(R.id.textView23);
+    TextView partido15 = (TextView) findViewById(R.id.textView24);
+
+    partido1.setText(datos.getString("P1E1C0") + " - " + datos.getString("P1E1C0"));
 
     Button volver = (Button) findViewById(R.id.button2);
 

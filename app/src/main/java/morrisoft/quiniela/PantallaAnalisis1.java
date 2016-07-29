@@ -36,6 +36,8 @@ public class PantallaAnalisis1 extends Activity {
   private int numeroEquipos2 = 0;
   private int numeroPartidos = 0;
   private Bundle bundle;
+  private HashMap<String,String> map = new HashMap<String,String>();
+
 
 
   @Override
@@ -43,12 +45,159 @@ public class PantallaAnalisis1 extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.pantalla_analisis1);
 
+    map.put("FC Barcelona FCB","FCB");
+    map.put("FC Barcelona","FCB");
+    map.put("Barcelona","FCB");
+    map.put("Real Madrid RMA","RMA");
+    map.put("Real Madrid","RMA");
+    map.put("Atlético Madrid ATM","ATM");
+    map.put("Atlético Madrid","ATM");
+    map.put("Atletico Madrid","ATM");
+    map.put("Villarreal CF VIL","VIL");
+    map.put("Villarreal CF","VIL");
+    map.put("Villarreal","VIL");
+    map.put("Athletic Club ATH","ATH");
+    map.put("Athletic Club","ATH");
+    map.put("RC Celta CEL","CEL");
+    map.put("RC Celta","CEL");
+    map.put("RC Celta Vigo","CEL");
+    map.put("Celta","CEL");
+    map.put("Celta Vigo","CEL");
+    map.put("Sevilla FC SFC","SFC");
+    map.put("Sevilla FC","SFC");
+    map.put("Sevilla","SFC");
+    map.put("Málaga CF MCF","MCF");
+    map.put("Málaga CF","MCF");
+    map.put("Malaga CF","MCF");
+    map.put("Málaga","MCF");
+    map.put("Malaga","MCF");
+    map.put("Real Sociedad RSO","RSO");
+    map.put("Real Sociedad","RSO");
+    map.put("Real Betis RBB","RBB");
+    map.put("Real Betis","RBB");
+    map.put("Betis","RBB");
+    map.put("UD Las Palmas LPA","LPA");
+    map.put("UD Las Palmas","LPA");
+    map.put("Las Palmas","LPA");
+    map.put("Palmas","LPA");
+    map.put("Valencia CF VCF","VCF");
+    map.put("Valencia CF","VCF");
+    map.put("Valencia","VCF");
+    map.put("RCD Espanyol ESP","ESP");
+    map.put("RCD Espanyol","ESP");
+    map.put("RCD Español","ESP");
+    map.put("Espanyol","ESP");
+    map.put("Español","ESP");
+    map.put("SD Eibar EIB","EIB");
+    map.put("SD Eibar","EIB");
+    map.put("Eibar","EIB");
+    map.put("RC Deportivo RCD","RCD");
+    map.put("RC Deportivo","RCD");
+    map.put("Deportivo","RCD");
+    map.put("Granada CF GCF","GCF");
+    map.put("Granada CF","GCF");
+    map.put("Granada","GCF");
+    map.put("R. Sporting RSG","RSG");
+    map.put("R. Sporting","RSG");
+    map.put("Sporting","RSG");
+    map.put("Sporting Gijón","RSG");
+    map.put("Rayo Vallecano RVM","RVM");
+    map.put("Rayo Vallecano","RVM");
+    map.put("Getafe CF GET","GET");
+    map.put("Getafe CF","GET");
+    map.put("Getafe","GET");
+    map.put("Levante UD LUD","LUD");
+    map.put("Levante UD","LUD");
+    map.put("Levante","LUD");
+    map.put("D. Alavés ALV","ALV");
+    map.put("D. Alavés","ALV");
+    map.put("D. Alaves","ALV");
+    map.put("Alavés","ALV");
+    map.put("Alaves","ALV");
+    map.put("CD Leganés LEG","LEG");
+    map.put("CD Leganés","LEG");
+    map.put("CD Leganes","LEG");
+    map.put("Leganés","LEG");
+    map.put("Leganes","LEG");
+    map.put("Nàstic NAS","NAS");
+    map.put("Nastic","NAS");
+    map.put("Nàstic","NAS");
+    map.put("Gimnàstic","NAS");
+    map.put("Gimnastic","NAS");
+    map.put("R. Zaragoza RZA","RZA");
+    map.put("R. Zaragoza","RZA");
+    map.put("Zaragoza","RZA");
+    map.put("Córdoba CF CCF","CCF");
+    map.put("Córdoba CF","CCF");
+    map.put("Córdoba","CCF");
+    map.put("Cordoba","CCF");
+    map.put("Girona FC GIR","GIR");
+    map.put("Girona FC","GIR");
+    map.put("Girona","GIR");
+    map.put("At Osasuna OSA","OSA");
+    map.put("At Osasuna","OSA");
+    map.put("Osasuna","OSA");
+    map.put("AD Alcorcón ADA","ADA");
+    map.put("AD Alcorcón","ADA");
+    map.put("Alcorcón","ADA");
+    map.put("Alcorcon","ADA");
+    map.put("R. Oviedo ROV","ROV");
+    map.put("R. Oviedo","ROV");
+    map.put("Oviedo","ROV");
+    map.put("Elche CF ECF","ECF");
+    map.put("Elche CF","ECF");
+    map.put("Elche","ECF");
+    map.put("CD Tenerife CDT","CDT");
+    map.put("CD Tenerife","CDT");
+    map.put("Tenerife","CDT");
+    map.put("CD Numancia NUM","NUM");
+    map.put("CD Numancia","NUM");
+    map.put("Numancia","NUM");
+    map.put("CD Lugo LUG","LUG");
+    map.put("CD Lugo","LUG");
+    map.put("Lugo","LUG");
+    map.put("CD Mirandés CDM","CDM");
+    map.put("CD Mirandés","CDM");
+    map.put("CD Mirandes","CDM");
+    map.put("Mirandés","CDM");
+    map.put("Mirandes","CDM");
+    map.put("SD Huesca HUE","HUE");
+    map.put("SD Huesca","HUE");
+    map.put("Huesca","HUE");
+    map.put("R. Valladolid CF VLL","VLL");
+    map.put("R. Valladolid CF","VLL");
+    map.put("R. Valladolid","VLL");
+    map.put("Valladolid","VLL");
+    map.put("UD Almería UDA","UDA");
+    map.put("UD Almería","UDA");
+    map.put("UD Almeria","UDA");
+    map.put("Almería","UDA");
+    map.put("Almeria","UDA");
+    map.put("SD Ponferradina SDP","SDP");
+    map.put("SD Ponferradina","SDP");
+    map.put("Ponferradina","SDP");
+    map.put("RCD Mallorca MLL","MLL");
+    map.put("RCD Mallorca","MLL");
+    map.put("Mallorca","MLL");
+    map.put("UE Llagostera LLA","LLA");
+    map.put("UE Llagostera","LLA");
+    map.put("Llagostera","LLA");
+    map.put("Albacete B. ABP","ABP");
+    map.put("Albacete B.","ABP");
+    map.put("Albacete","ABP");
+    map.put("Bilbao Athletic BAT","BAT");
+    map.put("Bilbao Athletic","BAT");
+    map.put("Athletic Bilbao","BAT");
+    map.put("Bilbao","BAT");
+
     AdView mAdView = (AdView) findViewById(R.id.adView1);
     AdRequest adRequest = new AdRequest.Builder().build();
     mAdView.loadAd(adRequest);
 
     StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitNetwork().build();
     StrictMode.setThreadPolicy(policy);
+
+    bundle = this.getIntent().getExtras();
 
     // Cargar datos primera división
 
@@ -154,26 +303,33 @@ public class PantallaAnalisis1 extends Activity {
       Elements info = doc.select("table");
 
       Elements tableRowElements = info.select(":not(thead) tr");
-      numeroPartidos = tableRowElements.size();
+
+      if ( tableRowElements.size() > 15 )
+        numeroPartidos = 15;
+
       for (int i = 0; i < tableRowElements.size(); i++) {
         Element row = tableRowElements.get(i);
         Elements rowItems = row.select("td");
 
-        for (int j = 0; j < 2; j++) {
+        if (rowItems.size() > 8) {
+          for (int j = 0; j <= 2; j++) {
             matches.add(rowItems.get(j).text());
             System.out.println(rowItems.get(j).text());
+          }
         }
+
       }
 
     } catch (IOException e) {
       e.printStackTrace();
     }
+
     // Si todas las paginas se han cargado
     if (numeroEquipos+numeroEquipos2+numeroPartidos == 57) {
       int haySuficientesDatos = -1;
       for (int i = 0; i < numeroPartidos; i++) {
-        String equipo1 = matches.get((i - 1) * 8 + 1).toString(); //TODO Ajustar
-        String equipo2 = matches.get((i - 1) * 8 + 2).toString(); //TODO Ajustar
+        String equipo1 = matches.get((i) * 3 + 1).toString();
+        String equipo2 = matches.get((i) * 3 + 2).toString();
         haySuficientesDatos = writeStats(getPosition(equipo1), getPosition(equipo2), i);
         if (haySuficientesDatos == -1)
           i = numeroPartidos;
@@ -181,6 +337,7 @@ public class PantallaAnalisis1 extends Activity {
       if (haySuficientesDatos == 0) {
         Intent intent = new Intent(PantallaAnalisis1.this, PantallaResultados.class);
         intent.putExtras(bundle);
+        startActivity(intent);
       }
     }
 
@@ -241,8 +398,6 @@ public class PantallaAnalisis1 extends Activity {
     });
 
     Button siguiente = (Button) findViewById(R.id.button);
-
-    bundle = this.getIntent().getExtras();
 
     siguiente.setOnClickListener(new View.OnClickListener() {
 
@@ -350,34 +505,45 @@ public class PantallaAnalisis1 extends Activity {
   }
 
   public String getCode(String nombre) {
-    HashMap<String,String> map = new HashMap<String,String>();
-    map.put("nombre","codigo");
-    //TODO Meter datos (global)
-    return map.get("nombre");
+
+    return map.get(nombre);
 
   }
 
   public int getPosition(String nombre) {
+    String arr[] = nombre.split(" \\(", 2);
+    String equipo = arr[0];
+    int posicion = -1;
     for (int i = 0;i < data.size(); i++) {
-      if (getCode(data.get((i - 1) * 8 + 1).toString()).equals(nombre))
-        return i;
+      String temp = data.get(i).toString();
+      if (getCode(temp).equals(getCode(equipo)))
+        posicion = i;
+      i+=7;
     }
-    return -1;
+    return posicion;
   }
 
   public int writeStats(int position1, int position2, int num) {
     String campo1 = "";
     String campo2 = "";
     if (position1 == -1 || position2 == -1) {
-      return -1;
+      for (int i = 0; i < 7; i++) {
+        // TODO Mostrar datos parciales
+        campo1 = "0";
+        campo2 = "0";
+        bundle.putString("P" + String.valueOf(num+1) + "E1C" + String.valueOf(i), campo1);
+        bundle.putString("P" + String.valueOf(num+1) + "E2C" + String.valueOf(i), campo2);
+
+      }
+      return 0;
 
     }
     else {
-      for (int i = 0; i < 8; i++) {
-        campo1 = data.get((position1 - 1) * 8 + i).toString();
-        campo2 = data.get((position2 - 1) * 8 + i).toString();
-        bundle.putString("P" + String.valueOf(num) + "E1C" + String.valueOf(i), campo1);
-        bundle.putString("P" + String.valueOf(num) + "E2C" + String.valueOf(i), campo2);
+      for (int i = 0; i < 7; i++) {
+        campo1 = data.get(position1 + i).toString();
+        campo2 = data.get(position2 + i).toString();
+        bundle.putString("P" + String.valueOf(num+1) + "E1C" + String.valueOf(i), campo1);
+        bundle.putString("P" + String.valueOf(num+1) + "E2C" + String.valueOf(i), campo2);
 
       }
       return 0;
