@@ -332,9 +332,14 @@ public class PantallaAnalisis1 extends Activity {
         String equipo2 = matches.get((i) * 3 + 2).toString();
         haySuficientesDatos = writeStats(getPosition(equipo1), getPosition(equipo2), i);
         if (haySuficientesDatos == -1)
-          i = numeroPartidos;
+			i = numeroPartidos;
+		else {
+			bundle.putString("P" + String.valueOf(i+1) + "E1C0", equipo1);
+			bundle.putString("P" + String.valueOf(i+1) + "E2C0", equipo2);
+		}
       }
       if (haySuficientesDatos == 0) {
+		  
         Intent intent = new Intent(PantallaAnalisis1.this, PantallaResultados.class);
         intent.putExtras(bundle);
         startActivity(intent);
@@ -528,7 +533,7 @@ public class PantallaAnalisis1 extends Activity {
     String campo2 = "";
     if (position1 == -1 || position2 == -1) {
       for (int i = 0; i < 7; i++) {
-        // TODO Mostrar datos parciales
+        // TODO Mostrar datos parciales, si un partido no tiene datos no marcar nada
         campo1 = "0";
         campo2 = "0";
         bundle.putString("P" + String.valueOf(num+1) + "E1C" + String.valueOf(i), campo1);

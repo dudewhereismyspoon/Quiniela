@@ -441,12 +441,18 @@ public class PantallaResultadoPartido extends Activity {
 
       Double progress = output - 0.1;
       progress *= 100;
+	  
+	  int prediccionPrincipal = 0;
+	  int prediccionSecundaria = 0;
+	  int prediccionAuxiliar = 0;
 
       if (progress >= 0) {
-        if (progress > 28)
+		if (progress > 28) {
           progress = progress*2;
-        if (progress < 23)
+		}
+        if (progress < 23) {
           progress = progress/2;
+		}
         barraIzquierda.setProgress((int) Math.round(progress));
         barraDerecha.setProgress(0);
       } else {
@@ -472,58 +478,30 @@ public class PantallaResultadoPartido extends Activity {
 
       if (output > 0.26) {
         decisionFija = "1";
+		prediccionPrincipal = 1;
       } else {
         if (output < 0.1) {
           decisionFija = "2";
+		  prediccionPrincipal = -1;
         } else {
           decisionFija = "X";
+		  prediccionPrincipal = 0;
         }
       }
-
+	  
       int valor1 = 0, valor2 = 0, valorX = 0;
 
       Double outputTest = Math.abs(outputFinal);
 
-      if (outputTest > 1) {
-        valor1 = 4;
-        valor2 = 0;
-        valorX = 1;
-        if (decisionFija == "X") {
-          valorX += 1;
-        }
-        if (decisionFija == "2") {
-          valorX += 1;
-          valor2 += 1;
-        }
-      } else {
-        if (outputTest > 0.8) {
-          valor1 = 3;
-          valor2 = 1;
-          valorX = 1;
-          if (decisionFija == "X") {
-            valorX += 2;
-          }
-          if (decisionFija == "1") {
-            valor1 += 1;
-          }
-          if (decisionFija == "2") {
-            valor2 += 1;
-          }
-        } else {
-          valor1 = 2;
-          valor2 = 1;
-          valorX = 2;
-          if (decisionFija == "X") {
-            valorX += 2;
-          }
-          if (decisionFija == "1") {
-            valor1 += 1;
-          }
-          if (decisionFija == "2") {
-            valor2 += 1;
-          }
-        }
-      }
+	  if (outputTest > 0.8) {
+		  prediccionSecundaria = 1;
+	  }
+	  else if (outputTest < -1) {
+		  prediccionSecundaria = -1;
+	  } else {
+		  prediccionSecundaria = 0;
+	  }
+	  
 
       if (outputFinal < 0) {
         int temp = valor1;
@@ -537,156 +515,34 @@ public class PantallaResultadoPartido extends Activity {
       eX*=100;
       double e2 = (input[4] / input[1] + input[10] / input[9])/2;
       e2*=100;
-      TextView estadistica1 = (TextView) findViewById(R.id.textView46);
-      TextView estadisticaX = (TextView) findViewById(R.id.textView45);
-      TextView estadistica2 = (TextView) findViewById(R.id.textView47);
-      estadistica1.setText("1: "+String.valueOf(Math.round(e1))+"%");
-      estadistica2.setText("2: "+String.valueOf(Math.round(e2))+"%");
-      estadisticaX.setText("X: "+String.valueOf(Math.round(eX))+"%");
-
-      int ajuste = 0;
-      if (e1>50){
-        ajuste = 1;
-        if (e1>80)
-          ajuste = 2;
-      }
-      else {
-        if (e1<25) {
-          ajuste = -2;
-        }
-        ajuste = -1;
-      }
-      valor1 = valor1 + ajuste;
-      if (valor1 < 0)
-        valor1 = 0;
-      if (valor1 > 4)
-        valor1 = 4;
-
-      if (eX>50){
-        ajuste = 1;
-        if (eX>80)
-          ajuste = 2;
-      }
-      else {
-        if (eX<25)
-          ajuste = -2;
-        ajuste = -1;
-      }
-      valorX = valorX + ajuste;
-      if (valorX < 0)
-        valor1 = 0;
-      if (valorX > 4)
-        valor1 = 4;
-
-      if (e2>50){
-        ajuste = 1;
-        if (e2>80)
-          ajuste = 2;
-      }
-      else {
-        if (e2<25)
-          ajuste = -2;
-        ajuste = -1;
-      }
-      valor2 = valor2 + ajuste;
-      if (valor2 < 0)
-        valor1 = 0;
-      if (valor2 > 4)
-        valor1 = 4;
-
-      TextView probabilidad1 = (TextView) findViewById(R.id.textView34);
-      TextView probabilidadX = (TextView) findViewById(R.id.textView35);
-      TextView probabilidad2 = (TextView) findViewById(R.id.textView36);
-
-      switch (valor1) {
-        case (0):
-
-          probabilidad1.setTextColor(0xFFEE0000);
-          probabilidad1.setText("Muy Baja.");
-          break;
-        case (1):
-
-          probabilidad1.setTextColor(0xFFFF8000);
-          probabilidad1.setText("Baja.");
-          break;
-        case (2):
-
-          probabilidad1.setTextColor(0xFFFFFF00);
-          probabilidad1.setText("Normal.");
-          break;
-        case (3):
-
-          probabilidad1.setTextColor(0xFF00FFFF);
-          probabilidad1.setText("Alta.");
-          break;
-        case (4):
-
-          probabilidad1.setTextColor(0xFF0000FF);
-          probabilidad1.setText("Muy Alta.");
-          break;
-        default:
-          break;
-      }
-
-      switch (valor2) {
-        case (0):
-
-          probabilidad2.setTextColor(0xFFEE0000);
-          probabilidad2.setText("Muy Baja.");
-          break;
-        case (1):
-
-          probabilidad2.setTextColor(0xFFFF8000);
-          probabilidad2.setText("Baja.");
-          break;
-        case (2):
-
-          probabilidad2.setTextColor(0xFFFFFF00);
-          probabilidad2.setText("Normal.");
-          break;
-        case (3):
-
-          probabilidad2.setTextColor(0xFF00FFFF);
-          probabilidad2.setText("Alta.");
-          break;
-        case (4):
-
-          probabilidad2.setTextColor(0xFF0000FF);
-          probabilidad2.setText("Muy Alta.");
-          break;
-        default:
-          break;
-      }
-
-      switch (valorX) {
-        case (0):
-
-          probabilidadX.setTextColor(0xFFEE0000);
-          probabilidadX.setText("Muy Baja.");
-          break;
-        case (1):
-
-          probabilidadX.setTextColor(0xFFFF8000);
-          probabilidadX.setText("Baja.");
-          break;
-        case (2):
-
-          probabilidadX.setTextColor(0xFFFFFF00);
-          probabilidadX.setText("Normal.");
-          break;
-        case (3):
-
-          probabilidadX.setTextColor(0xFF00FFFF);
-          probabilidadX.setText("Alta.");
-          break;
-        case (4):
-
-          probabilidadX.setTextColor(0xFF0000FF);
-          probabilidadX.setText("Muy Alta.");
-          break;
-        default:
-          break;
-      }
+      
+	  if (e1 > e2 && e1 > eX) {
+		  prediccionAuxiliar = 1;
+	  } else if (e2 > e1 && e2 > eX) {
+		  prediccionAuxiliar = -1;
+	  } else {
+		  prediccionAuxiliar = 0;
+	  }
+	  
+	  String resultadoProbable = "";
+	  String resultadoPosible = "";
+	  
+	  if (prediccionPrincipal == prediccionSecundaria == prediccionAuxiliar) {
+		  resultadoProbable = prediccionPrincipal;
+		  resultadoPosible = prediccionPrincipal;
+	  } else if ( prediccionPrincipal == prediccionSecundaria && prediccionPrincipal != prediccionAuxiliar ) {
+		  resultadoProbable = prediccionPrincipal;
+		  resultadoPosible = prediccionAuxiliar;
+	  } else if ( prediccionPrincipal != prediccionSecundaria && prediccionPrincipal == prediccionAuxiliar) {
+		  resultadoProbable = prediccionPrincipal;
+		  resultadoPosible = prediccionSecundaria;
+	  } else if ( prediccionPrincipal != prediccionSecundaria && prediccionSecundaria == prediccionAuxiliar) {
+		  resultadoProbable = prediccionSecundaria;
+		  resultadoPosible = prediccionPrincipal;
+	  } else {
+		  resultadoProbable = prediccionPrincipal;
+		  resultadoPosible = prediccionSecundaria;
+	  }
 
     }
 
