@@ -1,6 +1,8 @@
 package morrisoft.quiniela;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,6 +23,8 @@ public class PantallaResultados extends Activity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.pantalla_resultados);
+
+    Boolean mostrarError = false;
 
     final InterstitialAd interstitialAd;
     interstitialAd = new InterstitialAd(this);
@@ -348,234 +352,236 @@ public class PantallaResultados extends Activity {
       }
 
       // Input test
+      if (Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E1C1")) != 0 && Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E2C1")) != 0 ) {
+        double[] input = {
+                Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E1C1")),
+                Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E1C2")),
+                Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E1C3")),
+                Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E1C4")),
+                Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E1C5")),
+                Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E1C6")),
+                Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E1C7")),
+                Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E1C8")),
+                Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E2C1")),
+                Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E2C2")),
+                Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E2C3")),
+                Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E2C4")),
+                Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E2C5")),
+                Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E2C6")),
+                Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E2C7")),
+                Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E2C8")),
+        };
 
-      double[] input = {
-          Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E1C1")),
-          Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E1C2")),
-          Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E1C3")),
-          Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E1C4")),
-          Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E1C5")),
-          Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E1C6")),
-          Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E1C7")),
-          Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E1C8")),
-          Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E2C1")),
-          Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E2C2")),
-          Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E2C3")),
-          Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E2C4")),
-          Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E2C5")),
-          Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E2C6")),
-          Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E2C7")),
-          Double.parseDouble(datos.getString("P" + String.valueOf(n) + "E2C8")),
-      };
-
-      double[] inputLayerOutput = new double[20];
-      for (int i = 0; i < 20; i++) {
-        inputLayerOutput[i] = biasInput[i];
-        for (int j = 0; j < 16; j++)
-          inputLayerOutput[i] += capaInicial[(16 * i) + j] * input[j];
-        inputLayerOutput[i] = tansig(inputLayerOutput[i]);
-      }
-
-      double[] hiddenLayerOutput = new double[19];
-      for (int i = 0; i < 19; i++) {
-        hiddenLayerOutput[i] = biasDos[i];
-        for (int j = 0; j < 20; j++)
-          hiddenLayerOutput[i] += capaDos[(20 * i) + j] * inputLayerOutput[j];
-        hiddenLayerOutput[i] = tansig(hiddenLayerOutput[i]);
-      }
-
-      double output = biasTres;
-      for (int i = 0; i < 19; i++)
-        output += capaTres[i] * hiddenLayerOutput[i];
-
-
-      double[] inputLayerOutput12 = new double[40];
-      for (int i = 0; i < 40; i++) {
-        inputLayerOutput12[i] = bias1[i];
-        for (int j = 0; j < 16; j++)
-          inputLayerOutput12[i] += capa1[(16 * i) + j] * input[j];
-        inputLayerOutput12[i] = tansig(inputLayerOutput12[i]);
-      }
-
-      double[] hiddenLayerOutput12 = new double[20];
-      for (int i = 0; i < 20; i++) {
-        hiddenLayerOutput12[i] = bias2[i];
-        for (int j = 0; j < 40; j++)
-          hiddenLayerOutput12[i] += capa2[(40 * i) + j] * inputLayerOutput12[j];
-        hiddenLayerOutput12[i] = tansig(hiddenLayerOutput12[i]);
-      }
-
-      double[] hiddenLayer2Output12 = new double[16];
-      for (int i = 0; i < 16; i++) {
-        hiddenLayer2Output12[i] = bias3[i];
-        for (int j = 0; j < 20; j++)
-          hiddenLayer2Output12[i] += capa3[(20 * i) + j] * hiddenLayerOutput12[j];
-        hiddenLayer2Output12[i] = tansig(hiddenLayer2Output12[i]);
-      }
-
-      double output12 = bias4;
-      for (int i = 0; i < 16; i++)
-        output12 += capa4[i] * hiddenLayer2Output12[i];
-
-      // Mostrar Resultados
-
-      double outputEspecial = -output12;
-
-      String decision = "";
-      String decisionFija = "";
-
-      if (output > 0.26) {
-        decisionFija = "1";
-      } else {
-        if (output < 0.1) {
-          decisionFija = "2";
-        } else {
-          decisionFija = "X";
+        double[] inputLayerOutput = new double[20];
+        for (int i = 0; i < 20; i++) {
+          inputLayerOutput[i] = biasInput[i];
+          for (int j = 0; j < 16; j++)
+            inputLayerOutput[i] += capaInicial[(16 * i) + j] * input[j];
+          inputLayerOutput[i] = tansig(inputLayerOutput[i]);
         }
-      }
 
-      if (outputEspecial > 1) {
-        decision = "1";
-      } else {
-        if (outputEspecial < -1) {
-          decision = "2";
-        } else {
-          decision = "X";
+        double[] hiddenLayerOutput = new double[19];
+        for (int i = 0; i < 19; i++) {
+          hiddenLayerOutput[i] = biasDos[i];
+          for (int j = 0; j < 20; j++)
+            hiddenLayerOutput[i] += capaDos[(20 * i) + j] * inputLayerOutput[j];
+          hiddenLayerOutput[i] = tansig(hiddenLayerOutput[i]);
         }
-      }
 
-      String numeroCheckBox;
-      int id;
-      CheckBox check;
+        double output = biasTres;
+        for (int i = 0; i < 19; i++)
+          output += capaTres[i] * hiddenLayerOutput[i];
 
-      switch (decision) {
-        case "X":
-          // Primera quiniela
-          switch (decisionFija) {
-            case "X":
-              numeroCheckBox = String.valueOf(3 * (n - 1) + 2);
-              id = this.getResources().getIdentifier("checkBox" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
-              check = (CheckBox) findViewById(id);
-              check.setChecked(true);
-              // Segunda quiniela
-              numeroCheckBox = String.valueOf(n);
-              id = this.getResources().getIdentifier("RandomX_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
-              check = (CheckBox) findViewById(id);
-              check.setChecked(true);
-              break;
-            case "1":
-              numeroCheckBox = String.valueOf(3 * (n - 1) + 1);
-              id = this.getResources().getIdentifier("checkBox" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
-              check = (CheckBox) findViewById(id);
-              check.setChecked(true);
-              // Segunda quiniela
-              numeroCheckBox = String.valueOf(n);
-              id = this.getResources().getIdentifier("Random1_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
-              check = (CheckBox) findViewById(id);
-              check.setChecked(true);
-              break;
-            case "2":
-              numeroCheckBox = String.valueOf(3 * (n - 1) + 3);
-              id = this.getResources().getIdentifier("checkBox" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
-              check = (CheckBox) findViewById(id);
-              check.setChecked(true);
-              // Segunda quiniela
-              numeroCheckBox = String.valueOf(n);
-              id = this.getResources().getIdentifier("Random2_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
-              check = (CheckBox) findViewById(id);
-              check.setChecked(true);
-              break;
+
+        double[] inputLayerOutput12 = new double[40];
+        for (int i = 0; i < 40; i++) {
+          inputLayerOutput12[i] = bias1[i];
+          for (int j = 0; j < 16; j++)
+            inputLayerOutput12[i] += capa1[(16 * i) + j] * input[j];
+          inputLayerOutput12[i] = tansig(inputLayerOutput12[i]);
+        }
+
+        double[] hiddenLayerOutput12 = new double[20];
+        for (int i = 0; i < 20; i++) {
+          hiddenLayerOutput12[i] = bias2[i];
+          for (int j = 0; j < 40; j++)
+            hiddenLayerOutput12[i] += capa2[(40 * i) + j] * inputLayerOutput12[j];
+          hiddenLayerOutput12[i] = tansig(hiddenLayerOutput12[i]);
+        }
+
+        double[] hiddenLayer2Output12 = new double[16];
+        for (int i = 0; i < 16; i++) {
+          hiddenLayer2Output12[i] = bias3[i];
+          for (int j = 0; j < 20; j++)
+            hiddenLayer2Output12[i] += capa3[(20 * i) + j] * hiddenLayerOutput12[j];
+          hiddenLayer2Output12[i] = tansig(hiddenLayer2Output12[i]);
+        }
+
+        double output12 = bias4;
+        for (int i = 0; i < 16; i++)
+          output12 += capa4[i] * hiddenLayer2Output12[i];
+
+        // Mostrar Resultados
+
+        double outputEspecial = -output12;
+
+        String decision = "";
+        String decisionFija = "";
+
+        if (output > 0.26) {
+          decisionFija = "1";
+        } else {
+          if (output < 0.1) {
+            decisionFija = "2";
+          } else {
+            decisionFija = "X";
           }
-          break;
-        case "1":
-          // Primera quiniela
-          numeroCheckBox = String.valueOf(3 * (n - 1) + 1);
-          id = this.getResources().getIdentifier("checkBox" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
-          check = (CheckBox) findViewById(id);
-          check.setChecked(true);
-          // Segunda quiniela
-          numeroCheckBox = String.valueOf(n);
-          id = this.getResources().getIdentifier("Random1_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
-          check = (CheckBox) findViewById(id);
-          check.setChecked(true);
-
-          break;
-        case "2":
-          // Primera quiniela
-          numeroCheckBox = String.valueOf(3 * (n - 1) + 3);
-          id = this.getResources().getIdentifier("checkBox" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
-          check = (CheckBox) findViewById(id);
-          check.setChecked(true);
-          // Segunda quiniela
-          numeroCheckBox = String.valueOf(n);
-          id = this.getResources().getIdentifier("Random2_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
-          check = (CheckBox) findViewById(id);
-          check.setChecked(true);
-
-          break;
-        default:
-          break;
-      }
-
-      if (outputEspecial > 0.7) {
-        decision = "1";
-      } else {
-        if (outputEspecial < -0.7) {
-          decision = "2";
-        } else {
-          decision = "X";
         }
-      }
 
-      switch (decision) {
-        case "X":
-          numeroCheckBox = String.valueOf(n);
-          id = this.getResources().getIdentifier("RandomX_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
-          check = (CheckBox) findViewById(id);
-          check.setChecked(true);
-          break;
-        case "1":
-          numeroCheckBox = String.valueOf(n);
-          id = this.getResources().getIdentifier("Random1_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
-          check = (CheckBox) findViewById(id);
-          check.setChecked(true);
-          break;
-        case "2":
-          numeroCheckBox = String.valueOf(n);
-          id = this.getResources().getIdentifier("Random2_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
-          check = (CheckBox) findViewById(id);
-          check.setChecked(true);
-          break;
-        default:
-          break;
-      }
+        if (outputEspecial > 1) {
+          decision = "1";
+        } else {
+          if (outputEspecial < -1) {
+            decision = "2";
+          } else {
+            decision = "X";
+          }
+        }
 
-      switch (decisionFija) {
-        case "X":
-          numeroCheckBox = String.valueOf(n);
-          id = this.getResources().getIdentifier("RandomX_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
-          check = (CheckBox) findViewById(id);
-          check.setChecked(true);
-          break;
-        case "1":
-          numeroCheckBox = String.valueOf(n);
-          id = this.getResources().getIdentifier("Random1_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
-          check = (CheckBox) findViewById(id);
-          check.setChecked(true);
-          break;
-        case "2":
-          numeroCheckBox = String.valueOf(n);
-          id = this.getResources().getIdentifier("Random2_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
-          check = (CheckBox) findViewById(id);
-          check.setChecked(true);
-          break;
-        default:
-          break;
-      }
+        String numeroCheckBox;
+        int id;
+        CheckBox check;
 
+        switch (decision) {
+          case "X":
+            // Primera quiniela
+            switch (decisionFija) {
+              case "X":
+                numeroCheckBox = String.valueOf(3 * (n - 1) + 2);
+                id = this.getResources().getIdentifier("checkBox" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
+                check = (CheckBox) findViewById(id);
+                check.setChecked(true);
+                // Segunda quiniela
+                numeroCheckBox = String.valueOf(n);
+                id = this.getResources().getIdentifier("RandomX_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
+                check = (CheckBox) findViewById(id);
+                check.setChecked(true);
+                break;
+              case "1":
+                numeroCheckBox = String.valueOf(3 * (n - 1) + 1);
+                id = this.getResources().getIdentifier("checkBox" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
+                check = (CheckBox) findViewById(id);
+                check.setChecked(true);
+                // Segunda quiniela
+                numeroCheckBox = String.valueOf(n);
+                id = this.getResources().getIdentifier("Random1_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
+                check = (CheckBox) findViewById(id);
+                check.setChecked(true);
+                break;
+              case "2":
+                numeroCheckBox = String.valueOf(3 * (n - 1) + 3);
+                id = this.getResources().getIdentifier("checkBox" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
+                check = (CheckBox) findViewById(id);
+                check.setChecked(true);
+                // Segunda quiniela
+                numeroCheckBox = String.valueOf(n);
+                id = this.getResources().getIdentifier("Random2_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
+                check = (CheckBox) findViewById(id);
+                check.setChecked(true);
+                break;
+            }
+            break;
+          case "1":
+            // Primera quiniela
+            numeroCheckBox = String.valueOf(3 * (n - 1) + 1);
+            id = this.getResources().getIdentifier("checkBox" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
+            check = (CheckBox) findViewById(id);
+            check.setChecked(true);
+            // Segunda quiniela
+            numeroCheckBox = String.valueOf(n);
+            id = this.getResources().getIdentifier("Random1_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
+            check = (CheckBox) findViewById(id);
+            check.setChecked(true);
+
+            break;
+          case "2":
+            // Primera quiniela
+            numeroCheckBox = String.valueOf(3 * (n - 1) + 3);
+            id = this.getResources().getIdentifier("checkBox" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
+            check = (CheckBox) findViewById(id);
+            check.setChecked(true);
+            // Segunda quiniela
+            numeroCheckBox = String.valueOf(n);
+            id = this.getResources().getIdentifier("Random2_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
+            check = (CheckBox) findViewById(id);
+            check.setChecked(true);
+
+            break;
+          default:
+            break;
+        }
+
+        if (outputEspecial > 0.7) {
+          decision = "1";
+        } else {
+          if (outputEspecial < -0.7) {
+            decision = "2";
+          } else {
+            decision = "X";
+          }
+        }
+
+        switch (decision) {
+          case "X":
+            numeroCheckBox = String.valueOf(n);
+            id = this.getResources().getIdentifier("RandomX_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
+            check = (CheckBox) findViewById(id);
+            check.setChecked(true);
+            break;
+          case "1":
+            numeroCheckBox = String.valueOf(n);
+            id = this.getResources().getIdentifier("Random1_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
+            check = (CheckBox) findViewById(id);
+            check.setChecked(true);
+            break;
+          case "2":
+            numeroCheckBox = String.valueOf(n);
+            id = this.getResources().getIdentifier("Random2_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
+            check = (CheckBox) findViewById(id);
+            check.setChecked(true);
+            break;
+          default:
+            break;
+        }
+
+        switch (decisionFija) {
+          case "X":
+            numeroCheckBox = String.valueOf(n);
+            id = this.getResources().getIdentifier("RandomX_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
+            check = (CheckBox) findViewById(id);
+            check.setChecked(true);
+            break;
+          case "1":
+            numeroCheckBox = String.valueOf(n);
+            id = this.getResources().getIdentifier("Random1_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
+            check = (CheckBox) findViewById(id);
+            check.setChecked(true);
+            break;
+          case "2":
+            numeroCheckBox = String.valueOf(n);
+            id = this.getResources().getIdentifier("Random2_" + numeroCheckBox, "id", PantallaResultados.this.getPackageName());
+            check = (CheckBox) findViewById(id);
+            check.setChecked(true);
+            break;
+          default:
+            break;
+        }
+
+      }
+      else {
+        mostrarError = true;
+      }
     }
-
-    // TODO Modificar textos
 
     TextView partido1 = (TextView) findViewById(R.id.textView8);
     TextView partido2 = (TextView) findViewById(R.id.textView11);
@@ -593,7 +599,34 @@ public class PantallaResultados extends Activity {
     TextView partido14 = (TextView) findViewById(R.id.textView23);
     TextView partido15 = (TextView) findViewById(R.id.textView24);
 
-    partido1.setText(datos.getString("P1E1C0") + " - " + datos.getString("P1E1C0"));
+    partido1.setText(datos.getString("P1E1C0") + " - " + datos.getString("P1E2C0") + "\n");
+    partido2.setText(datos.getString("P2E1C0") + " - " + datos.getString("P2E2C0") + "\n");
+    partido3.setText(datos.getString("P3E1C0") + " - " + datos.getString("P3E2C0") + "\n");
+    partido4.setText(datos.getString("P4E1C0") + " - " + datos.getString("P4E2C0") + "\n");
+    partido5.setText(datos.getString("P5E1C0") + " - " + datos.getString("P5E2C0") + "\n");
+    partido6.setText(datos.getString("P6E1C0") + " - " + datos.getString("P6E2C0") + "\n");
+    partido7.setText(datos.getString("P7E1C0") + " - " + datos.getString("P7E2C0") + "\n");
+    partido8.setText(datos.getString("P8E1C0") + " - " + datos.getString("P8E2C0") + "\n");
+    partido9.setText(datos.getString("P9E1C0") + " - " + datos.getString("P9E2C0") + "\n");
+    partido10.setText(datos.getString("P10E1C0") + " - " + datos.getString("P10E2C0") + "\n");
+    partido11.setText(datos.getString("P11E1C0") + " - " + datos.getString("P11E2C0") + "\n");
+    partido12.setText(datos.getString("P12E1C0") + " - " + datos.getString("P12E2C0") + "\n");
+    partido13.setText(datos.getString("P13E1C0") + " - " + datos.getString("P13E2C0") + "\n");
+    partido14.setText(datos.getString("P14E1C0") + " - " + datos.getString("P14E2C0") + "\n");
+    partido15.setText(datos.getString("P15E1C0") + " - " + datos.getString("P15E2C0") + "\n");
+
+    if ( mostrarError ) {
+      AlertDialog.Builder dialog = new AlertDialog.Builder(PantallaResultados.this);
+      dialog.setTitle("Atención").setCancelable(false);
+      dialog.setMessage("No hay suficientes datos para alguno de los encuentros, no se mostrará ninguna predicción.");
+      dialog.setPositiveButton("Volver",
+              new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                  dialog.dismiss();
+                }
+              });
+      dialog.show();
+    }
 
     Button volver = (Button) findViewById(R.id.button2);
 

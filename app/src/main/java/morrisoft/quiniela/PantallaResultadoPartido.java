@@ -524,10 +524,10 @@ public class PantallaResultadoPartido extends Activity {
 		  prediccionAuxiliar = 0;
 	  }
 	  
-	  String resultadoProbable = "";
-	  String resultadoPosible = "";
+	  int resultadoProbable = 0;
+	  int resultadoPosible = 0;
 	  
-	  if (prediccionPrincipal == prediccionSecundaria == prediccionAuxiliar) {
+	  if (prediccionPrincipal == prediccionSecundaria && prediccionSecundaria == prediccionAuxiliar) {
 		  resultadoProbable = prediccionPrincipal;
 		  resultadoPosible = prediccionPrincipal;
 	  } else if ( prediccionPrincipal == prediccionSecundaria && prediccionPrincipal != prediccionAuxiliar ) {

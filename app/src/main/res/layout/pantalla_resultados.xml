@@ -30,10 +30,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/etiqResultado"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/p1"
         android:textColor="#00F"
-        android:textSize="20sp"/>
+        android:textSize="10sp"/>
 
     <TextView
         android:id="@+id/textView11"
@@ -44,7 +44,7 @@
         android:layout_below="@+id/textView8"
         android:text="@string/p2"
         android:textColor="#00F"
-        android:textSize="20sp"/>
+        android:textSize="10sp"/>
 
     <TextView
         android:id="@+id/textView12"
@@ -55,7 +55,7 @@
         android:layout_below="@+id/textView11"
         android:text="@string/p3"
         android:textColor="#00F"
-        android:textSize="20sp"/>
+        android:textSize="10sp"/>
 
     <TextView
         android:id="@+id/textView13"
@@ -66,7 +66,7 @@
         android:layout_below="@+id/textView12"
         android:text="@string/p4"
         android:textColor="#00F"
-        android:textSize="20sp"/>
+        android:textSize="10sp"/>
 
     <TextView
         android:id="@+id/textView14"
@@ -77,7 +77,7 @@
         android:layout_below="@+id/textView13"
         android:text="@string/p5"
         android:textColor="#00F"
-        android:textSize="20sp"/>
+        android:textSize="10sp"/>
 
     <TextView
         android:id="@+id/textView15"
@@ -88,7 +88,7 @@
         android:layout_below="@+id/textView14"
         android:text="@string/p6"
         android:textColor="#00F"
-        android:textSize="20sp"/>
+        android:textSize="10sp"/>
 
     <TextView
         android:id="@+id/textView16"
@@ -99,7 +99,7 @@
         android:layout_below="@+id/textView15"
         android:text="@string/p7"
         android:textColor="#00F"
-        android:textSize="20sp"/>
+        android:textSize="10sp"/>
 
     <TextView
         android:id="@+id/textView17"
@@ -110,7 +110,7 @@
         android:layout_below="@+id/textView16"
         android:text="@string/p8"
         android:textColor="#00F"
-        android:textSize="20sp"/>
+        android:textSize="10sp"/>
 
     <TextView
         android:id="@+id/textView18"
@@ -121,7 +121,7 @@
         android:layout_below="@+id/textView17"
         android:text="@string/p9"
         android:textColor="#00F"
-        android:textSize="20sp"/>
+        android:textSize="10sp"/>
 
     <TextView
         android:id="@+id/textView19"
@@ -132,7 +132,7 @@
         android:layout_below="@+id/textView18"
         android:text="@string/p10"
         android:textColor="#00F"
-        android:textSize="20sp"/>
+        android:textSize="10sp"/>
 
     <TextView
         android:id="@+id/textView20"
@@ -143,7 +143,7 @@
         android:layout_below="@+id/textView19"
         android:text="@string/p11"
         android:textColor="#00F"
-        android:textSize="20sp"/>
+        android:textSize="10sp"/>
 
     <TextView
         android:id="@+id/textView21"
@@ -154,7 +154,7 @@
         android:layout_below="@+id/textView20"
         android:text="@string/p12"
         android:textColor="#00F"
-        android:textSize="20sp"/>
+        android:textSize="10sp"/>
 
     <TextView
         android:id="@+id/textView22"
@@ -165,7 +165,7 @@
         android:layout_below="@+id/textView21"
         android:text="@string/p13"
         android:textColor="#00F"
-        android:textSize="20sp"/>
+        android:textSize="10sp"/>
 
     <TextView
         android:id="@+id/textView23"
@@ -176,7 +176,7 @@
         android:layout_below="@+id/textView22"
         android:text="@string/p14"
         android:textColor="#00F"
-        android:textSize="20sp"/>
+        android:textSize="10sp"/>
 
     <TextView
         android:id="@+id/textView24"
@@ -187,7 +187,7 @@
         android:layout_below="@+id/textView23"
         android:text="@string/p15"
         android:textColor="#00F"
-        android:textSize="20sp"/>
+        android:textSize="10sp"/>
 
     <CheckBox
         android:id="@+id/checkBox1"
@@ -195,8 +195,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView8"
         android:layout_alignBottom="@+id/textView8"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:button="@drawable/cross"/>
 
     <CheckBox
@@ -227,8 +227,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView11"
         android:layout_alignBottom="@+id/textView11"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:button="@drawable/cross"/>
 
     <CheckBox
@@ -259,8 +259,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView12"
         android:layout_alignBottom="@+id/textView12"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:button="@drawable/cross"/>
 
     <CheckBox
@@ -291,8 +291,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView13"
         android:layout_alignBottom="@+id/textView13"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:button="@drawable/cross"/>
 
     <CheckBox
@@ -323,8 +323,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView14"
         android:layout_alignBottom="@+id/textView14"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:button="@drawable/cross"/>
 
     <CheckBox
@@ -355,8 +355,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView15"
         android:layout_alignBottom="@+id/textView15"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:button="@drawable/cross"/>
 
     <CheckBox
@@ -387,8 +387,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView16"
         android:layout_alignBottom="@+id/textView16"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:button="@drawable/cross"/>
 
     <CheckBox
@@ -419,8 +419,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView17"
         android:layout_alignBottom="@+id/textView17"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:button="@drawable/cross"/>
 
     <CheckBox
@@ -451,8 +451,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView18"
         android:layout_alignBottom="@+id/textView18"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:button="@drawable/cross"/>
 
     <CheckBox
@@ -483,8 +483,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView19"
         android:layout_alignBottom="@+id/textView19"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:button="@drawable/cross"/>
 
     <CheckBox
@@ -515,8 +515,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView20"
         android:layout_alignBottom="@+id/textView20"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:button="@drawable/cross"/>
 
     <CheckBox
@@ -547,8 +547,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView21"
         android:layout_alignBottom="@+id/textView21"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:button="@drawable/cross"/>
 
     <CheckBox
@@ -579,8 +579,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView22"
         android:layout_alignBottom="@+id/textView22"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:button="@drawable/cross"/>
 
     <CheckBox
@@ -611,8 +611,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView23"
         android:layout_alignBottom="@+id/textView23"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:button="@drawable/cross"/>
 
     <CheckBox
@@ -643,8 +643,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView24"
         android:layout_alignBottom="@+id/textView24"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:button="@drawable/cross"/>
 
     <CheckBox

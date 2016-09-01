@@ -53,6 +53,9 @@ public class PantallaAnalisis1 extends Activity {
     map.put("Atlético Madrid ATM","ATM");
     map.put("Atlético Madrid","ATM");
     map.put("Atletico Madrid","ATM");
+    map.put("Atlético de Madrid ATM","ATM");
+    map.put("Atlético de Madrid","ATM");
+    map.put("Atletico de Madrid","ATM");
     map.put("Villarreal CF VIL","VIL");
     map.put("Villarreal CF","VIL");
     map.put("Villarreal","VIL");
@@ -334,12 +337,13 @@ public class PantallaAnalisis1 extends Activity {
         if (haySuficientesDatos == -1)
 			i = numeroPartidos;
 		else {
-			bundle.putString("P" + String.valueOf(i+1) + "E1C0", equipo1);
-			bundle.putString("P" + String.valueOf(i+1) + "E2C0", equipo2);
+            String arr[] = equipo1.split(" \\(", 2);
+            String arr2[] = equipo2.split(" \\(", 2);
+			bundle.putString("P" + String.valueOf(i+1) + "E1C0", arr[0]);
+            bundle.putString("P" + String.valueOf(i+1) + "E2C0", arr2[0]);
 		}
       }
       if (haySuficientesDatos == 0) {
-		  
         Intent intent = new Intent(PantallaAnalisis1.this, PantallaResultados.class);
         intent.putExtras(bundle);
         startActivity(intent);
@@ -519,9 +523,10 @@ public class PantallaAnalisis1 extends Activity {
     String arr[] = nombre.split(" \\(", 2);
     String equipo = arr[0];
     int posicion = -1;
-    for (int i = 0;i < data.size(); i++) {
-      String temp = data.get(i).toString();
-      if (getCode(temp).equals(getCode(equipo)))
+    for (int i = 0;i < data.size()-7; i++) {
+      if (getCode( data.get(i).toString()) == null)
+        posicion = -1;
+      else if (getCode( data.get(i).toString()).equals(getCode(equipo)))
         posicion = i;
       i+=7;
     }
@@ -533,7 +538,7 @@ public class PantallaAnalisis1 extends Activity {
     String campo2 = "";
     if (position1 == -1 || position2 == -1) {
       for (int i = 0; i < 7; i++) {
-        // TODO Mostrar datos parciales, si un partido no tiene datos no marcar nada
+        //TODO Mostrar datos parciales, si un partido no tiene datos no marcar nada
         campo1 = "0";
         campo2 = "0";
         bundle.putString("P" + String.valueOf(num+1) + "E1C" + String.valueOf(i), campo1);
